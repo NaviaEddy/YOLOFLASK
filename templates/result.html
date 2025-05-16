@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Resultado de la detección</h1>
+    <div class="mb-3">
+        <img src="../{{ image_path }}" alt="Imagen procesada" class="img-fluid">
+    </div>
+    <h2>Personas detectadas en la imagen:</h2>
+    <ul>
+        {% for results in humans %}
+            <li>
+                Confianza: {{ '%.2f'|format(results.confidence)}} | Caja: {{ results.box}}
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <a href="/" class="btn btn-secondary">Volver</a>
+{% endblock %}

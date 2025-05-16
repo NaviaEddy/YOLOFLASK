@@ -23,11 +23,12 @@ def detect_humans(image_path):
                 })
 
     annotated = results[0].plot()
-    annotated = cv2.cvtColor(annotated, cv2.COLOR_BGR2RGB)
-    out_name = os.path.basename(image_path)
-    out_path = os.path.join(os.path.dirname(image_path), 'out_' + out_name)
-    print(out_path)
-    cv2.imwrite(out_path, annotated)
-    return humans, out_path
+    out_name = 'out_' + os.path.basename(image_path)
+
+    output_path = os.path.join(os.path.dirname(__file__), '../static/uploads', out_name)
+    output_path = os.path.abspath(output_path)
+
+    cv2.imwrite(output_path, annotated)
+    return humans, output_path
     
         

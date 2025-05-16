@@ -27,9 +27,7 @@ def index():
 
             #Detecciones
             humans, output_path  = detect_humans(save_path)
-            rel = os.path.relpath(output_path, start=os.getcwd())
-            rel_output = "./" + rel.replace(os.path.sep, "/")
-            print(rel_output)
+            rel_output = '/static/uploads/' + os.path.basename(output_path)
             return render_template('result.html', humans=humans, image_path=rel_output)
     return render_template('index.html')
 
